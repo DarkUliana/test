@@ -28,14 +28,16 @@ public function view($paper_id = 0)
 
     if($paper_id=0)
 	{
-		$data['title'] = $data['news']['paper_head'];
+		$data['title'] = 'Новини';
+	    $this->load->view('header', $data);
+		$this->load->view('news', $data);
 	}
 	else
 	{
-		$data['title'] = 'Новини';
+		$data['title'] = $data['news']['paper_head'];
+		$this->load->view('header', $data);
+		$this->load->view('new', $data);
 	}
-    $this->load->view('header', $data);
-    $this->load->view('news', $data);
-    $this->load->view('footer');
+		$this->load->view('footer');
 }
 }
