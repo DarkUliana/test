@@ -9,37 +9,33 @@ class News extends CI_Controller {
 
     public function index()
     {
-    $data['news'] = $this->news_model->get_news();
-    $data['title'] = "Новини";
 
-    $this->load->view('header', $data);
-    $this->load->view('news', $data);
-    $this->load->view('footer');
     }
 
-public function view($paper_id = 0)
-{
-    $data['news'] = $this->news_model->get_news($paper_id);
-
-    if (empty($data['news']))
-    {
-        show_404();
-    }
-
-	else{
-    if($paper_id==0)
+	public function view()
 	{
+
+		$config['base_url'] = '/test/index.php/news/view';
+		$config['total_rows'] = $this->db->count_all_results('papers');
+		$config['per_page'] = 3; 
+		$config['full_tag_open'] = '<p>';
+		$config['full_tag_close'] = '</p>';
+
+		$this->pagination->initialize($config);
+		$data['news'] = $this->news_model->get_news($config['per_page'], $this->uri->segment(3));
 		$data['title'] = 'Новини';
 	    $this->load->view('header', $data);
 		$this->load->view('news', $data);
+
+		$this->load->view('footer');
 	}
-	else
+	
+	public function page($paper_id )
 	{
+		$data['news'] = $this->news_model->get_new($paper_id);
 		$data['title'] = $data['news']['paper_head'];
 		$this->load->view('header', $data);
 		$this->load->view('new', $data);
-	}
 		$this->load->view('footer');
 	}
-}
 }

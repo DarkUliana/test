@@ -6,7 +6,8 @@
        <br>
         <?php echo $news_item['paper_short'] ?>
 
-    <p><a href="view/<?php echo $news_item['paper_id'] ?>">Детальніше...</a></p>
+    <p><a href="page/<?php echo $news_item['paper_id'] ?>">Детальніше...</a></p>
 	</div>
 	
 <?php endforeach ?>
+<?php echo $this->pagination->create_links();?>
