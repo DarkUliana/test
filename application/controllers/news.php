@@ -26,7 +26,8 @@ public function view($paper_id = 0)
         show_404();
     }
 
-    if($paper_id=0)
+	else{
+    if($paper_id==0)
 	{
 		$data['title'] = 'Новини';
 	    $this->load->view('header', $data);
@@ -39,5 +40,6 @@ public function view($paper_id = 0)
 		$this->load->view('new', $data);
 	}
 		$this->load->view('footer');
+	}
 }
 }

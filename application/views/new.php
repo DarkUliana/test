@@ -1,3 +1,5 @@
-<?php
-echo '<h2>'.$news['paper_head'].'</h2>';
-echo $news['paper_text'];
+<div class="main">
+<img src="/test/img/<?php echo $news['paper_image']?>">
+<br>
+<?php echo $news['paper_text']?>
+</div>
