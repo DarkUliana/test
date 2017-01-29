@@ -1,6 +1,68 @@
-.main
+
+.main, .pag, #five, .one, h1, h3
 {
 	position: relative;
+	padding:10px;
+	border-radius:5px;
+	margin:10px	auto;
+	display:block;
+}
+.main, .pag, #five, h1, h3
+{
 	width: 80%;
+}
+
+.main
+{
+	background-color:#c6ecd8;
+}
+
+img
+{
+	width:200px;
+}
+
+h1, h3
+{
+	background-color:#fff0b3;
+}
+
+
+.pag
+{
+	background-color:#b3c4ff;
+	text-align:center;
+}	
+
+.p_item
+{
+	padding:5px;
+	font-size:15px;
+	font-weight:bold;
+}
+
+h3>a
+{
+	position:relative;
 	margin: 0px auto;
+	display:block;
+	width:150px;
+}
+
+a
+{
+	color:#000;
+}
+
+#five
+{
+	padding:0px;
+}
+.one
+{
+	margin:20px 0px 0px 0px;
+	background-color:#d1e2ff;
+	border-radius:5px;
+	font-size:20px;
+	font-weight:bold;
 }
