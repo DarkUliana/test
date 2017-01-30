@@ -19,9 +19,11 @@ class News extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['news'] = $this->news_model->get_news($config['per_page'], $this->uri->segment(3));
 		$data['title'] = 'Новини';
+		$data['tags'] = $this->news_model->get_tags();
 	    $this->load->view('header', $data);
+		$this->load->view('tags', $data);
 		$this->load->view('news', $data);
-
+		$this->load->view('pagination');
 		$this->load->view('footer');
 	}
 	
@@ -32,6 +34,7 @@ class News extends CI_Controller {
 		$data['title'] = $data['news']['paper_head'];
 		$this->load->view('head_with_js', $data);
 		$this->load->view('new', $data);
+		$this->load->view('back');
 		$this->load->view('five_news', $data);
 		$this->load->view('footer');
 
@@ -43,5 +46,17 @@ class News extends CI_Controller {
 			$text = $this->input->post('id');
 			$data['five'] = $this->news_model->get_five($text);
 			echo json_encode($data, JSON_UNESCAPED_UNICODE);
+	}
+	
+	
+	//
+	public function news_by_tag($tag_id)
+	{
+		$data['news'] = $this->news_model->get_news_by_tag($tag_id);
+		$data['title'] = ($this->news_model->get_tag_name($tag_id));
+	    $this->load->view('header', $data);
+		$this->load->view('news', $data);
+		$this->load->view('back');
+		$this->load->view('footer');		
 	}
 }
